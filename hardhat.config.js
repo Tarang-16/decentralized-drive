@@ -26,7 +26,7 @@ module.exports = {
     },
   },
   
-  paths : {
-    artifacts: "./client/src/artifacts",
-  },
+//   paths : {
+//     artifacts: "./client/src/artifacts",
+//   },
 };
