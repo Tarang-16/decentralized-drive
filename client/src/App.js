@@ -1,7 +1,8 @@
 
 import { useState, useEffect } from "react";
 import { ethers } from "ethers";
-import { contractAddresses, abi } from "./constants/index";
+import { abi } from "./constants/index";
+import contractAddress from './constants/contractAddress.json';
 import FileUpload from "./components/FileUpload";
 import Display from "./components/Display";
 import Modal from "./components/Modal";
@@ -31,10 +32,10 @@ function App() {
         const signer = provider.getSigner();
         const address = await signer.getAddress();
         setAccount(address);
-        let contractAddress = contractAddresses;
+        let contractAdd = contractAddress.contractAddresses;
 
         const contract = new ethers.Contract(
-          contractAddress,
+          contractAdd,
           abi,
           signer
         );
