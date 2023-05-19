@@ -1,6 +1,7 @@
 import Upload from "./artifacts/contracts/Upload.sol/Upload.json";
 import { useState, useEffect } from "react";
 import { ethers } from "ethers";
+import { contractAddresses, abi } from "./constants/index";
 import FileUpload from "./components/FileUpload";
 import Display from "./components/Display";
 import Modal from "./components/Modal";
@@ -30,11 +31,11 @@ function App() {
         const signer = provider.getSigner();
         const address = await signer.getAddress();
         setAccount(address);
-        let contractAddress = "0x29Ee70F45A049E8B25f7313D7125D931bAd1Fafb";
+        let contractAddress = contractAddresses;
 
         const contract = new ethers.Contract(
           contractAddress,
-          Upload.abi,
+          abi,
           signer
         );
         // console.log(contract);
