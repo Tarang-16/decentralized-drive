@@ -15,11 +15,11 @@ function App() {
   const [provider, setProvider] = useState(null);
   const [modalOpen, setModalOpen] = useState(false);
 
+  try {
   useEffect(() => {
     const provider = new ethers.providers.Web3Provider(window.ethereum);
 
     const loadProvider = async () => {
-      try {
       if (provider) {
         window.ethereum.on("chainChanged", () => {
           window.location.reload();
@@ -44,12 +44,12 @@ function App() {
         setContract(contract);
         setProvider(provider);
       };
-    } catch (error) {
-      alert("Metamask is not installed");
-    };
     };
     provider && loadProvider();
   }, []);
+  } catch (error) {
+      alert("Metamask is not installed");
+    };
   return (
     <>
       {!modalOpen && (
