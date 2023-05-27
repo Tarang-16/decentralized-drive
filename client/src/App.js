@@ -19,6 +19,7 @@ function App() {
     const provider = new ethers.providers.Web3Provider(window.ethereum);
 
     const loadProvider = async () => {
+      try {
       if (provider) {
         window.ethereum.on("chainChanged", () => {
           window.location.reload();
@@ -42,9 +43,10 @@ function App() {
         // console.log(contract);
         setContract(contract);
         setProvider(provider);
-      } else {
-        console.error("Metamask is not installed");
-      }
+      };
+    } catch (error) {
+      alert("Metamask is not installed");
+    };
     };
     provider && loadProvider();
   }, []);
